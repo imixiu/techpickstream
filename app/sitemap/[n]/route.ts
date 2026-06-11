@@ -6,14 +6,13 @@ import { siteConfig } from '@/lib/site-config';
 const SITE_URL = siteConfig.url;
 const ARTICLES_PER_SITEMAP = 50000;
 
-export const revalidate = 3600;
+export const dynamic = 'force-dynamic';
 
 export async function GET(
   _request: Request,
   { params }: { params: Promise<{ n: string }> }
 ) {
   const resolvedParams = await params;
-  // Parse sitemap1.xml, sitemap2.xml, etc.
   const match = resolvedParams.n.match(/^sitemap(\d+)\.xml$/);
   if (!match) {
     return new NextResponse('Invalid sitemap file', { status: 404 });
@@ -24,8 +23,39 @@ export async function GET(
     return new NextResponse('Invalid sitemap number', { status: 400 });
   }
 
+  const today = new Date().toISOString().split('T')[0];
   const offset = (pageNum - 1) * ARTICLES_PER_SITEMAP;
 
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+  // Only in sitemap1: static pages (homepage, categories, authors, pagination)
+  if (pageNum === 1) {
+    // Homepage
+    xml += `<url>\n<loc>${SITE_URL}/</loc>\n<lastmod>${today}</lastmod>\n<priority>1.0</priority>\n</url>\n`;
+
+    // Category pages + pagination
+    const PAGE_SIZE = 24;
+    const categories = await query(
+      `SELECT type, COUNT(*) as cnt FROM articles WHERE site = $1 AND is_online = 'Y' GROUP BY type`,
+      [SITE]
+    );
+    for (const cat of categories) {
+      xml += `<url>\n<loc>${SITE_URL}/${cat.type}</loc>\n<lastmod>${today}</lastmod>\n<priority>0.8</priority>\n</url>\n`;
+      const pages = Math.ceil(parseInt(cat.cnt) / PAGE_SIZE);
+      for (let p = 2; p <= pages; p++) {
+        xml += `<url>\n<loc>${SITE_URL}/${cat.type}/page/${p}</loc>\n<lastmod>${today}</lastmod>\n<priority>0.6</priority>\n</url>\n`;
+      }
+    }
+
+    // Author pages
+    const authors = await query('SELECT slug FROM authors WHERE site = $1', [SITE]);
+    for (const a of authors) {
+      xml += `<url>\n<loc>${SITE_URL}/author/${a.slug}</loc>\n<lastmod>${today}</lastmod>\n<priority>0.6</priority>\n</url>\n`;
+    }
+  }
+
+  // Article URLs
   const rows = await query(
     `SELECT type, short_title, published_time
      FROM articles
@@ -35,17 +65,10 @@ export async function GET(
     [SITE, ARTICLES_PER_SITEMAP, offset]
   );
 
-  if (rows.length === 0) {
-    return new NextResponse('No articles found', { status: 404 });
-  }
-
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-
   for (const row of rows) {
     const lastMod = row.published_time
       ? new Date(row.published_time).toISOString().split('T')[0]
-      : new Date().toISOString().split('T')[0];
+      : today;
     xml += `<url>\n<loc>${SITE_URL}/${row.type}/${row.short_title}</loc>\n<lastmod>${lastMod}</lastmod>\n<priority>0.9</priority>\n</url>\n`;
   }
 

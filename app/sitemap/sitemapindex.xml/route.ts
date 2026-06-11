@@ -15,24 +15,13 @@ export async function GET() {
   );
   const totalArticles = parseInt(countResult[0].total);
   const numSitemaps = Math.max(1, Math.ceil(totalArticles / ARTICLES_PER_SITEMAP));
+  const today = new Date().toISOString().split('T')[0];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
 
-  xml += `<sitemap>\n<loc>${SITE_URL}/</loc>\n<lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n</sitemap>\n`;
-
-  // Category pages
-  const categories = await query(
-    `SELECT DISTINCT type FROM articles WHERE site = $1 AND is_online = 'Y'`,
-    [SITE]
-  );
-  for (const cat of categories) {
-    xml += `<sitemap>\n<loc>${SITE_URL}/${cat.type}</loc>\n<lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n</sitemap>\n`;
-  }
-
-  // Article sitemaps
   for (let i = 1; i <= numSitemaps; i++) {
-    xml += `<sitemap>\n<loc>${SITE_URL}/sitemap/sitemap${i}.xml</loc>\n<lastmod>${new Date().toISOString().split('T')[0]}</lastmod>\n</sitemap>\n`;
+    xml += `<sitemap>\n<loc>${SITE_URL}/sitemap/sitemap${i}.xml</loc>\n<lastmod>${today}</lastmod>\n</sitemap>\n`;
   }
 
   xml += `</sitemapindex>\n`;
