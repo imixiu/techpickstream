@@ -33,15 +33,18 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  background: var(--white);
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .site-header .logo {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary-dark);
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-decoration: none;
 }
 

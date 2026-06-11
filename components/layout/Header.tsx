@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="site-header">
       <Link href="/" className="logo">
-        {siteConfig.title}
+        Tech<span style={{ color: '#06b6d4', WebkitTextFillColor: '#06b6d4' }}>Pick</span>Stream
       </Link>
       <nav className="main-nav">
         {siteConfig.categories.map((cat) => (
