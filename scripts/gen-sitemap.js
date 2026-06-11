@@ -25,6 +25,12 @@ async function main() {
     { loc: DOMAIN + '/author', lastmod: today, priority: '0.7' },
   ];
 
+  // Individual author pages
+  const authors = await sql('SELECT slug FROM authors WHERE site = $1', [SITE]);
+  for (const a of authors) {
+    urls.push({ loc: `${DOMAIN}/author/${a.slug}`, lastmod: today, priority: '0.6' });
+  }
+
   // Category pages
   for (const cat of categories) {
     urls.push({ loc: `${DOMAIN}/${cat}`, lastmod: today, priority: '0.8' });
