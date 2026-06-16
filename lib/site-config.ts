@@ -5,7 +5,7 @@ export const siteConfig = {
   description: "Expert reviews, in-depth comparisons, and buying guides for smartphones, audio gear, wearables, smart home devices, laptops, and gaming tech.",
   tagline: "Your Stream of Smart Tech Picks",
   url: "https://techpickstream.com",
-  ogImage: "https://9bwbxubcyu3vbaiq.public.blob.vercel-storage.com/homepage/techpickstream/og-image-IsMP6ts9FKnm6xubrar6oT5dFMgdzI.png",
+  ogImage: "https://s.alicdn.com/@sc02/kf/A761cc8cee43244d9973382fbb6c5bfea6.jpg",
   colors: {
     primary: "#6366f1",
     primaryDark: "#4f46e5",
@@ -19,5 +19,6 @@ export const siteConfig = {
     { key: "smart-home", label: "Smart Home & IoT", description: "Smart home device reviews, home automation guides, and IoT product recommendations." },
     { key: "laptops-tablets", label: "Laptops & Tablets", description: "Laptop and tablet reviews for productivity, creativity, and everyday use across all price ranges." },
     { key: "gaming", label: "Gaming & Entertainment", description: "Gaming hardware, consoles, peripherals, and home entertainment setup guides." },
+    { key: "general", label: "General Tech", description: "General technology news, trends, guides, and product reviews across various tech categories." },
   ] as { key: string; label: string; description: string }[],
 };
