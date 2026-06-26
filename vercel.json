@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.techpickstream.com" }],
+      "destination": "https://techpickstream.com/$1",
+      "permanent": true
+    }
+  ]
+}

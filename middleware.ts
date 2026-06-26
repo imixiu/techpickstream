@@ -3,6 +3,14 @@ import type { NextRequest } from "next/server";
 
 // 301 redirect old ?page=N query params to static /page/N URLs
 export function middleware(request: NextRequest) {
+  // www → non-www 301 redirect
+  const host = request.headers.get("host") || "";
+  if (host.startsWith("www.")) {
+    const url = request.nextUrl.clone();
+    url.hostname = host.slice(4);
+    return NextResponse.redirect(url, 301);
+  }
+
   const { pathname, searchParams } = request.nextUrl;
   const pageParam = searchParams.get("page");
 

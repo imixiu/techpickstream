@@ -1,0 +1,3 @@
+export const production = {"DATABASE_URL":"postgresql://neondb_owner:npg_HKw8qxGg5cfj@ep-fancy-leaf-a4zukau9-pooler.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require","DASHSCOPE_API_KEY":"sk-b11580cc1fec4c2a814a8a97e3dfd7d1","BLOB_READ_WRITE_TOKEN":"vercel_blob_rw_9bWbXubcYU3vBaiQ_kQ1HfhFlMppx53jz72yf2tDUdAtcqU"};
+export const development = {"DATABASE_URL":"postgresql://neondb_owner:npg_HKw8qxGg5cfj@ep-fancy-leaf-a4zukau9-pooler.us-east-1.aws.neon.tech/neondb?channel_binding=require&sslmode=require","DASHSCOPE_API_KEY":"sk-b11580cc1fec4c2a814a8a97e3dfd7d1","BLOB_READ_WRITE_TOKEN":"vercel_blob_rw_9bWbXubcYU3vBaiQ_kQ1HfhFlMppx53jz72yf2tDUdAtcqU"};
+export const test = {};
