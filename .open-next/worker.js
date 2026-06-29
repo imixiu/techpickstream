@@ -64,6 +64,51 @@ export default {
                 const hit = await cacheGet(request.url);
                 if (hit) return hit;
             }
+            
+            // --- CF Cache API ---
+            function shouldCache(url) {
+                const p = new URL(url).pathname;
+                if (p.startsWith("/sitemap/") || p.startsWith("/_next/") || p.startsWith("/api/")) return false;
+                if (/\.[a-z]{2,5}$/.test(p) && !p.endsWith(".html")) return false;
+                return true;
+            }
+            async function cacheGet(url) {
+                try {
+const cacheUrl = new URL(url); cacheUrl.searchParams.set("_cv", "2"); const key = new Request(cacheUrl.toString(), { method: "GET", headers: {} });
+                const hit = await caches.default.match(key);
+                    if (hit) {
+                        const r = new Response(hit.body, hit);
+                        r.headers.set("x-cache", "HIT");
+                        return r;
+                    }
+                } catch(e) {}
+                return null;
+            }
+            async function cachePut(url, resp) {
+                if (resp.status !== 200) {
+                    resp.headers.set("x-cache", "SKIP-" + resp.status);
+                    return resp;
+                }
+                try {
+                    const body = await resp.arrayBuffer();
+                    const cacheUrl2 = new URL(url); cacheUrl2.searchParams.set("_cv", "2"); const key = new Request(cacheUrl2.toString(), { method: "GET", headers: {} });
+                    const h = new Headers(resp.headers);
+                    h.delete("vary");
+                    h.set("cache-control", "public, max-age=315360000, s-maxage=315360000");
+                    await caches.default.put(key, new Response(body, { status: 200, headers: h }));
+                    const rh = new Headers(resp.headers);
+                    rh.set("cache-control", "public, max-age=315360000, s-maxage=315360000");
+                    rh.set("x-cache", "MISS");
+                    return new Response(body, { status: 200, headers: rh });
+                } catch(e) {
+                    resp.headers.set("x-cache", "ERR");
+                    return resp;
+                }
+            }
+            if (request.method === "GET" && shouldCache(request.url)) {
+                const hit = await cacheGet(request.url);
+                if (hit) return hit;
+            }
             const url = new URL(request.url);
             // Serve images in development.
             // Note: "/cdn-cgi/image/..." requests do not reach production workers.

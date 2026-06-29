@@ -27,10 +27,10 @@ function mapPreview(row: any): ArticlePreview {
 export async function getAllArticles(): Promise<ArticlePreview[]> {
   const rows = await query(
     `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
-     FROM articles WHERE site = $1 AND is_online = 'Y' ORDER BY published_time DESC`,
+     FROM articles WHERE site = ? AND is_online = 'Y' ORDER BY published_time DESC`,
     [SITE]
   );
-  return rows.map(mapPreview);
+  return (rows as any[]).map(mapPreview);
 }
 
 export async function getArticlesByCategory(category: string, page = 1, pageSize = 24): Promise<{ articles: ArticlePreview[]; total: number }> {
@@ -38,26 +38,26 @@ export async function getArticlesByCategory(category: string, page = 1, pageSize
   const [rows, countRows] = await Promise.all([
     query(
       `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
-       FROM articles WHERE site = $1 AND type = $2 AND is_online = 'Y'
-       ORDER BY published_time DESC LIMIT $3 OFFSET $4`,
+       FROM articles WHERE site = ? AND type = ? AND is_online = 'Y'
+       ORDER BY published_time DESC LIMIT ? OFFSET ?`,
       [SITE, category, pageSize, offset]
     ),
     query(
-      `SELECT COUNT(*) as count FROM articles WHERE site = $1 AND type = $2 AND is_online = 'Y'`,
+      `SELECT COUNT(*) as count FROM articles WHERE site = ? AND type = ? AND is_online = 'Y'`,
       [SITE, category]
     ),
   ]);
-  const total = parseInt((countRows[0] as any).count, 10);
-  return { articles: rows.map(mapPreview), total };
+  const total = parseInt(((countRows as any[])[0] as any).count, 10);
+  return { articles: (rows as any[]).map(mapPreview), total };
 }
 
 export async function getArticle(category: string, slug: string): Promise<Article | null> {
   const rows = await query(
-    `SELECT * FROM articles WHERE site = $1 AND type = $2 AND short_title = $3 AND is_online = 'Y' LIMIT 1`,
+    `SELECT * FROM articles WHERE site = ? AND type = ? AND short_title = ? AND is_online = 'Y' LIMIT 1`,
     [SITE, category, slug]
   );
-  if (rows.length === 0) return null;
-  const row = rows[0] as any;
+  if ((rows as any[]).length === 0) return null;
+  const row = (rows as any[])[0] as any;
   return {
     id: row.id,
     slug: row.short_title,
@@ -80,72 +80,72 @@ export async function getArticle(category: string, slug: string): Promise<Articl
 export async function getFeaturedArticle(): Promise<ArticlePreview | null> {
   const rows = await query(
     `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
-     FROM articles WHERE site = $1 AND img IS NOT NULL AND is_online = 'Y'
+     FROM articles WHERE site = ? AND img IS NOT NULL AND is_online = 'Y'
      ORDER BY published_time DESC LIMIT 1`,
     [SITE]
   );
-  if (rows.length === 0) return null;
-  return mapPreview(rows[0]);
+  if ((rows as any[]).length === 0) return null;
+  return mapPreview((rows as any[])[0]);
 }
 
 export async function getRelatedArticles(category: string, excludeId: number): Promise<ArticlePreview[]> {
   const rows = await query(
     `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
-     FROM articles WHERE site = $1 AND type = $2 AND id != $3 AND is_online = 'Y'
+     FROM articles WHERE site = ? AND type = ? AND id != ? AND is_online = 'Y'
      ORDER BY published_time DESC LIMIT 3`,
     [SITE, category, excludeId]
   );
-  return rows.map(mapPreview);
+  return (rows as any[]).map(mapPreview);
 }
 
 export async function getAllAuthors(): Promise<Author[]> {
   const rows = await query(
-    `SELECT * FROM authors WHERE site = $1 ORDER BY id`,
+    `SELECT * FROM authors WHERE site = ? ORDER BY id`,
     [SITE]
   );
-  return rows as Author[];
+  return (rows as any[]) as Author[];
 }
 
 export async function getAuthorBySlug(slug: string): Promise<Author | null> {
   const rows = await query(
-    `SELECT * FROM authors WHERE site = $1 AND slug = $2 LIMIT 1`,
+    `SELECT * FROM authors WHERE site = ? AND slug = ? LIMIT 1`,
     [SITE, slug]
   );
-  if (rows.length === 0) return null;
-  return rows[0] as Author;
+  if ((rows as any[]).length === 0) return null;
+  return (rows as any[])[0] as Author;
 }
 
 export async function getArticlesByAuthor(authorName: string): Promise<ArticlePreview[]> {
   // Match by name OR slug (articles.author may store either)
   const rows = await query(
     `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
-     FROM articles WHERE site = $1 AND (author = $2 OR author = $3) AND is_online = 'Y'
+     FROM articles WHERE site = ? AND (author = ? OR author = ?) AND is_online = 'Y'
      ORDER BY published_time DESC`,
     [SITE, authorName, authorName.toLowerCase().replace(/\s+/g, '-')]
   );
-  return rows.map(mapPreview);
+  return (rows as any[]).map(mapPreview);
 }
 
 export async function getArticleCount(): Promise<number> {
   const rows = await query(
-    `SELECT COUNT(*) as count FROM articles WHERE site = $1 AND is_online = 'Y'`,
+    `SELECT COUNT(*) as count FROM articles WHERE site = ? AND is_online = 'Y'`,
     [SITE]
   );
-  return parseInt((rows[0] as any).count, 10);
+  return parseInt(((rows as any[])[0] as any).count, 10);
 }
 
 export async function getCategoryCount(): Promise<number> {
   const rows = await query(
-    `SELECT COUNT(DISTINCT type) as count FROM articles WHERE site = $1 AND is_online = 'Y'`,
+    `SELECT COUNT(DISTINCT type) as count FROM articles WHERE site = ? AND is_online = 'Y'`,
     [SITE]
   );
-  return parseInt((rows[0] as any).count, 10);
+  return parseInt(((rows as any[])[0] as any).count, 10);
 }
 
 export async function getAuthorCount(): Promise<number> {
   const rows = await query(
-    `SELECT COUNT(*) as count FROM authors WHERE site = $1`,
+    `SELECT COUNT(*) as count FROM authors WHERE site = ?`,
     [SITE]
   );
-  return parseInt((rows[0] as any).count, 10);
+  return parseInt(((rows as any[])[0] as any).count, 10);
 }
