@@ -1,5 +1,6 @@
 import { query } from "./db";
 import { SITE } from "./db";
+import { tairGet, tairSet } from "./tair";
 import { Article, ArticlePreview, Author } from "./types";
 
 function formatDate(date: unknown): string | null {
@@ -52,13 +53,17 @@ export async function getArticlesByCategory(category: string, page = 1, pageSize
 }
 
 export async function getArticle(category: string, slug: string): Promise<Article | null> {
+  const key = `techpickstream:article:${category}:${slug}`;
+  const cached = await tairGet(key);
+  if (cached) return cached;
+
   const rows = await query(
     `SELECT * FROM articles WHERE site = ? AND type = ? AND short_title = ? AND is_online = 'Y' LIMIT 1`,
     [SITE, category, slug]
   );
   if ((rows as any[]).length === 0) return null;
   const row = (rows as any[])[0] as any;
-  return {
+  const article = {
     id: row.id,
     slug: row.short_title,
     site: row.site,
@@ -75,6 +80,8 @@ export async function getArticle(category: string, slug: string): Promise<Articl
     tag: row.tag ?? null,
     isOnline: row.is_online ?? "Y",
   };
+  tairSet(key, article); // fire-and-forget
+  return article;
 }
 
 export async function getFeaturedArticle(): Promise<ArticlePreview | null> {
