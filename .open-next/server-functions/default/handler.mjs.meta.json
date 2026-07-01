@@ -4275,7 +4275,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__0emqwey._.js": {
-      "bytes": 787830,
+      "bytes": 790007,
       "imports": [
         {
           "path": "events",
@@ -4335,6 +4335,11 @@
         {
           "path": "node:diagnostics_channel",
           "kind": "require-call",
+          "external": true
+        },
+        {
+          "path": "<runtime>",
+          "kind": "import-statement",
           "external": true
         }
       ],
@@ -4810,7 +4815,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/chunks/node_modules_next_dist_esm_build_templates_app-route_0an_tkz.js": {
-      "bytes": 25165,
+      "bytes": 25116,
       "imports": [],
       "format": "cjs"
     },
@@ -8189,7 +8194,7 @@
           "bytesInOutput": 22745
         },
         ".open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__0emqwey._.js": {
-          "bytesInOutput": 1013539
+          "bytesInOutput": 1015776
         },
         ".open-next/server-functions/default/.next/server/chunks/ssr/[root-of-the-server]__0g11-io._.js": {
           "bytesInOutput": 6418
@@ -8282,7 +8287,7 @@
           "bytesInOutput": 246
         },
         ".open-next/server-functions/default/.next/server/chunks/node_modules_next_dist_esm_build_templates_app-route_0an_tkz.js": {
-          "bytesInOutput": 25503
+          "bytesInOutput": 25454
         },
         ".open-next/server-functions/default/.next/server/chunks/[turbopack]_runtime.js": {
           "bytesInOutput": 22798
@@ -8471,7 +8476,7 @@
           "bytesInOutput": 59609
         }
       },
-      "bytes": 4056334
+      "bytes": 4058522
     }
   }
 }

@@ -25,7 +25,7 @@ export const INDEX_HTML = `<!DOCTYPE html>
 <meta name="twitter:title" content="TechPickStream — Consumer Electronics Reviews, News & Buying Guides">
 <meta name="twitter:description" content="Expert reviews, in-depth comparisons, and buying guides for smartphones, audio gear, wearables, smart home devices, laptops, and gaming tech.">
 <meta name="twitter:image" content="https://s.alicdn.com/@sc02/kf/Af4f04a2a631f4f2ca464f1f30a2df58da.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" href="/icon.png?v=2" type="image/png"><text y='.9em' font-size='90'>⚡</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#8b5cf6;--accent:#06b6d4;--bg:#0f172a;--bg-card:#1e293b;--bg-card-hover:#334155;--text:#e2e8f0;--text-muted:#94a3b8;--text-dim:#64748b;--border:#334155;--gradient:linear-gradient(135deg,var(--primary),var(--secondary))}
@@ -97,14 +97,7 @@ nav a:hover{color:var(--primary)}
 .stat-item h3{font-size:42px;font-weight:800;color:#fff}
 .stat-item p{color:rgba(255,255,255,.8);font-size:14px;margin-top:4px}
 
-/* Newsletter */
-.newsletter{padding:80px 0;text-align:center}
-.newsletter h2{font-size:32px;font-weight:700;margin-bottom:12px}
-.newsletter p{color:var(--text-muted);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
-.newsletter-form{display:flex;gap:12px;max-width:480px;margin:0 auto}
-.newsletter-form input{flex:1;padding:14px 20px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;color:var(--text);font-size:15px}
-.newsletter-form input:focus{outline:none;border-color:var(--primary)}
-.newsletter-form button{padding:14px 28px;background:var(--gradient);color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:15px}
+
 
 /* Footer */
 footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:60px 0 30px}
@@ -123,7 +116,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
   .cat-grid,.article-grid{grid-template-columns:1fr}
   .author-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr}
-  .newsletter-form{flex-direction:column}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
 }
 </style>
@@ -315,17 +307,7 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </div>
 </section>
 
-<!-- Newsletter -->
-<section class="newsletter">
-<div class="container">
-<h2>Stay Ahead of the Tech Curve</h2>
-<p>Get our weekly roundup of the best reviews, deals, and buying guides delivered straight to your inbox.</p>
-<div class="newsletter-form">
-<input type="email" placeholder="Enter your email address">
-<button>Subscribe</button>
-</div>
-</div>
-</section>
+
 
 <!-- Footer -->
 <footer>
