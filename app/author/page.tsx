@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: `Our Authors - ${siteConfig.title}`,
   description: `Meet the expert authors behind ${siteConfig.title}.`,
+  robots: { index: false, follow: true },
 };
 
 export default async function AuthorsPage() {

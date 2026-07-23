@@ -11,9 +11,10 @@ interface AuthorPageProps {
 export async function generateMetadata({ params }: AuthorPageProps): Promise<Metadata> {
   const { slug } = await params;
   const author = await getAuthorBySlug(slug);
-  if (!author) return { title: "Author Not Found" };
+  if (!author) return { title: "Author Not Found", robots: { index: false, follow: true } };
   return {
     title: `${author.name} - ${siteConfig.title}`,
+    robots: { index: false, follow: true },
     description: author.description || `Articles by ${author.name}`,
   };
 }

@@ -25,7 +25,7 @@ export const INDEX_HTML = `<!DOCTYPE html>
 <meta name="twitter:title" content="TechPickStream — Consumer Electronics Reviews, News & Buying Guides">
 <meta name="twitter:description" content="Expert reviews, in-depth comparisons, and buying guides for smartphones, audio gear, wearables, smart home devices, laptops, and gaming tech.">
 <meta name="twitter:image" content="https://s.alicdn.com/@sc02/kf/Af4f04a2a631f4f2ca464f1f30a2df58da.jpg">
-<link rel="icon" href="/icon.png?v=2" type="image/png"><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="icon" href="/icon.png?v=2" type="image/png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#6366f1;--primary-dark:#4f46e5;--secondary:#8b5cf6;--accent:#06b6d4;--bg:#0f172a;--bg-card:#1e293b;--bg-card-hover:#334155;--text:#e2e8f0;--text-muted:#94a3b8;--text-dim:#64748b;--border:#334155;--gradient:linear-gradient(135deg,var(--primary),var(--secondary))}
@@ -34,8 +34,6 @@ a{color:var(--accent);text-decoration:none;transition:color .2s}
 a:hover{color:var(--primary)}
 img{max-width:100%;height:auto}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-/* Header */
 header{background:rgba(15,23,42,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;max-width:1200px;margin:0 auto}
 .logo{font-size:24px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -43,8 +41,6 @@ header{background:rgba(15,23,42,.95);backdrop-filter:blur(10px);border-bottom:1p
 nav{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
 nav a{color:var(--text-muted);font-size:14px;font-weight:500;transition:color .2s}
 nav a:hover{color:var(--primary)}
-
-/* Hero */
 .hero{position:relative;min-height:500px;display:flex;align-items:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('https://s.alicdn.com/@sc02/kf/Ae0b2fa33f4f849da8520455f26da3e78f.jpg') center/cover;opacity:.3}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.4),rgba(15,23,42,.8))}
@@ -54,8 +50,6 @@ nav a:hover{color:var(--primary)}
 .hero p{font-size:18px;color:var(--text-muted);max-width:600px;margin-bottom:32px}
 .hero-btn{display:inline-block;padding:14px 32px;background:var(--gradient);color:#fff;font-weight:600;border-radius:8px;font-size:16px;transition:transform .2s,box-shadow .2s}
 .hero-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,.4);color:#fff}
-
-/* Categories */
 .categories{padding:80px 0}
 .section-title{font-size:28px;font-weight:700;margin-bottom:40px;text-align:center}
 .section-title .accent{color:var(--primary)}
@@ -68,8 +62,6 @@ nav a:hover{color:var(--primary)}
 .cat-card h3 a:hover{color:var(--primary)}
 .cat-card p{color:var(--text-muted);font-size:14px;margin-bottom:16px}
 .cat-link{color:var(--accent);font-size:14px;font-weight:500}
-
-/* Latest Articles */
 .latest{padding:80px 0;background:rgba(30,41,59,.3)}
 .article-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
 .article-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:transform .2s}
@@ -81,8 +73,6 @@ nav a:hover{color:var(--primary)}
 .article-card h3 a{color:var(--text)}
 .article-card h3 a:hover{color:var(--primary)}
 .article-card .meta{color:var(--text-dim);font-size:13px}
-
-/* Authors */
 .authors{padding:80px 0}
 .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
 .author-card{text-align:center;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;transition:border-color .2s}
@@ -90,16 +80,10 @@ nav a:hover{color:var(--primary)}
 .author-card img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:12px;border:3px solid var(--primary)}
 .author-card h4{font-size:16px;font-weight:600;margin-bottom:4px}
 .author-card p{color:var(--text-muted);font-size:13px}
-
-/* Stats */
 .stats{padding:60px 0;background:var(--gradient)}
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;text-align:center}
 .stat-item h3{font-size:42px;font-weight:800;color:#fff}
 .stat-item p{color:rgba(255,255,255,.8);font-size:14px;margin-top:4px}
-
-
-
-/* Footer */
 footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:60px 0 30px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
 .footer-brand .logo{margin-bottom:12px}
@@ -108,8 +92,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 .footer-col a{display:block;color:var(--text-muted);font-size:14px;margin-bottom:8px}
 .footer-col a:hover{color:var(--primary)}
 .footer-bottom{text-align:center;padding-top:30px;border-top:1px solid var(--border);color:var(--text-dim);font-size:13px}
-
-/* Responsive */
 @media(max-width:768px){
   nav{display:none}
   .hero-content{padding:40px 20px}
@@ -124,8 +106,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </script>
 </head>
 <body>
-
-<!-- Header -->
 <header>
 <div class="header-inner">
 <a href="/" class="logo">Tech<span>Pick</span>Stream</a>
@@ -141,8 +121,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </nav>
 </div>
 </header>
-
-<!-- Hero -->
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-overlay"></div>
@@ -152,8 +130,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 <a href="/smartphones" class="hero-btn">Explore Reviews →</a>
 </div>
 </section>
-
-<!-- Categories -->
 <section class="categories">
 <div class="container">
 <h2 class="section-title">Browse by <span class="accent">Category</span></h2>
@@ -203,20 +179,16 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </div>
 </div>
 </section>
-
-<!-- Stats -->
 <section class="stats">
 <div class="container">
 <div class="stats-grid">
-<div class="stat-item"><h3>500+</h3><p>Expert Reviews</p></div>
+<div class="stat-item"><h3>32,000+</h3><p>Expert Reviews</p></div>
 <div class="stat-item"><h3>7</h3><p>Tech Categories</p></div>
 <div class="stat-item"><h3>10</h3><p>Expert Writers</p></div>
 <div class="stat-item"><h3>24/7</h3><p>Fresh Coverage</p></div>
 </div>
 </div>
 </section>
-
-<!-- Latest Articles -->
 <section class="latest">
 <div class="container">
 <h2 class="section-title">Latest <span class="accent">Reviews & Guides</span></h2>
@@ -272,8 +244,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </div>
 </div>
 </section>
-
-<!-- Authors -->
 <section class="authors">
 <div class="container">
 <h2 class="section-title">Meet Our <span class="accent">Expert Writers</span></h2>
@@ -306,10 +276,6 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </div>
 </div>
 </section>
-
-
-
-<!-- Footer -->
 <footer>
 <div class="container">
 <div class="footer-grid">
@@ -336,19 +302,17 @@ footer{background:rgba(15,23,42,.95);border-top:1px solid var(--border);padding:
 </div>
 <div class="footer-col">
 <h4>Legal</h4>
-<a href="/smartphones">Privacy Policy</a>
-<a href="/smartphones">Terms of Use</a>
-<a href="/smartphones">Editorial Policy</a>
-<a href="/smartphones">Contact Us</a>
+<a href="/privacy-policy">Privacy Policy</a>
+<a href="/terms-of-use">Terms of Use</a>
+<a href="/editorial-policy">Editorial Policy</a>
+<a href="/contact">Contact Us</a>
 </div>
 </div>
 <div class="footer-bottom">
-<p>&copy; 2025 TechPickStream. All rights reserved. Product prices and availability are subject to change.</p>
+<p>&copy; 2026 TechPickStream. All rights reserved. Product prices and availability are subject to change.</p>
 </div>
 </div>
 </footer>
-
 </body>
 </html>
 `;
-

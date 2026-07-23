@@ -1,6 +1,6 @@
 import { query } from "./db";
 import { SITE } from "./db";
-import { tairGet, tairSet } from "./tair";
+import { tairGet } from "./tair";
 import { Article, ArticlePreview, Author } from "./types";
 
 function formatDate(date: unknown): string | null {
@@ -34,32 +34,32 @@ export async function getAllArticles(): Promise<ArticlePreview[]> {
   return (rows as any[]).map(mapPreview);
 }
 
-export async function getArticlesByCategory(category: string, page = 1, pageSize = 24): Promise<{ articles: ArticlePreview[]; total: number }> {
+export async function getArticlesByType(type: string, page = 1, pageSize = 24): Promise<{ articles: ArticlePreview[]; total: number }> {
   const offset = (page - 1) * pageSize;
   const [rows, countRows] = await Promise.all([
     query(
       `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
        FROM articles WHERE site = ? AND type = ? AND is_online = 'Y'
        ORDER BY published_time DESC LIMIT ? OFFSET ?`,
-      [SITE, category, pageSize, offset]
+      [SITE, type, pageSize, offset]
     ),
     query(
       `SELECT COUNT(*) as count FROM articles WHERE site = ? AND type = ? AND is_online = 'Y'`,
-      [SITE, category]
+      [SITE, type]
     ),
   ]);
   const total = parseInt(((countRows as any[])[0] as any).count, 10);
   return { articles: (rows as any[]).map(mapPreview), total };
 }
 
-export async function getArticle(category: string, slug: string): Promise<Article | null> {
-  const key = `techpickstream:article:${category}:${slug}`;
+export async function getArticle(type: string, slug: string): Promise<Article | null> {
+  const key = `techpickstream:article:${type}:${slug}`;
   const cached = await tairGet(key);
   if (cached) return cached;
 
   const rows = await query(
     `SELECT * FROM articles WHERE site = ? AND type = ? AND short_title = ? AND is_online = 'Y' LIMIT 1`,
-    [SITE, category, slug]
+    [SITE, type, slug]
   );
   if ((rows as any[]).length === 0) return null;
   const row = (rows as any[])[0] as any;
@@ -80,7 +80,7 @@ export async function getArticle(category: string, slug: string): Promise<Articl
     tag: row.tag ?? null,
     isOnline: row.is_online ?? "Y",
   };
-  tairSet(key, article); // fire-and-forget
+
   return article;
 }
 
@@ -95,12 +95,12 @@ export async function getFeaturedArticle(): Promise<ArticlePreview | null> {
   return mapPreview((rows as any[])[0]);
 }
 
-export async function getRelatedArticles(category: string, excludeId: number): Promise<ArticlePreview[]> {
+export async function getRelatedArticles(type: string, excludeId: number): Promise<ArticlePreview[]> {
   const rows = await query(
     `SELECT id, short_title, site, type, title, description, img, author, published_time, tag, is_online
      FROM articles WHERE site = ? AND type = ? AND id != ? AND is_online = 'Y'
      ORDER BY published_time DESC LIMIT 3`,
-    [SITE, category, excludeId]
+    [SITE, type, excludeId]
   );
   return (rows as any[]).map(mapPreview);
 }
