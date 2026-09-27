@@ -51,7 +51,7 @@ const STRUCTURES = [
   'Guided tour: walk through key features and use cases one by one.',
 ];
 
-const AUTHORS = ['Marcus Chen','Sarah Williams','James Park','Elena Rodriguez','David Kim','Rachel Foster','Alex Turner','Priya Sharma','Tom Bradley','TechPick Team'];
+const AUTHORS = ['Marcus Chen','Sarah Williams','James Park','Elena Rodriguez','David Kim','Rachel Foster','Alex Turner','Priya Sharma','Tom Bradley'];
 const AUTHOR_MAP = {
   'smartphones': ['Marcus Chen','Priya Sharma','Alex Turner'],
   'audio-gear': ['Sarah Williams','Tom Bradley','Alex Turner'],
@@ -59,6 +59,7 @@ const AUTHOR_MAP = {
   'smart-home': ['Elena Rodriguez','David Kim','Alex Turner'],
   'laptops-tablets': ['Rachel Foster','Alex Turner','Marcus Chen'],
   'gaming': ['David Kim','Tom Bradley','James Park'],
+  'general': ['Alex Turner','Priya Sharma','Rachel Foster'],
 };
 
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
