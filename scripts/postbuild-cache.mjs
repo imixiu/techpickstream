@@ -19,7 +19,7 @@ const cacheHelpers = `
             }
             async function cacheGet(url) {
                 try {
-const cacheUrl = new URL(url); cacheUrl.searchParams.set("_cv", "2"); const key = new Request(cacheUrl.toString(), { method: "GET", headers: {} });
+const cacheUrl = new URL(url); cacheUrl.searchParams.set("_cv", "v4"); const key = new Request(cacheUrl.toString(), { method: "GET", headers: {} });
                 const hit = await caches.default.match(key);
                     if (hit) {
                         const r = new Response(hit.body, hit);
@@ -36,7 +36,7 @@ const cacheUrl = new URL(url); cacheUrl.searchParams.set("_cv", "2"); const key 
                 }
                 try {
                     const body = await resp.arrayBuffer();
-                    const cacheUrl2 = new URL(url); cacheUrl2.searchParams.set("_cv", "2"); const key = new Request(cacheUrl2.toString(), { method: "GET", headers: {} });
+                    const cacheUrl2 = new URL(url); cacheUrl2.searchParams.set("_cv", "v3"); const key = new Request(cacheUrl2.toString(), { method: "GET", headers: {} });
                     const h = new Headers(resp.headers);
                     h.delete("vary");
                     h.set("cache-control", "public, max-age=315360000, s-maxage=315360000");

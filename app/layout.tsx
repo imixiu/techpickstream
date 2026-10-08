@@ -53,7 +53,29 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-95PY8PSZ0Y');
+            gtag('config', 'G-95PY8PSZ0Y', {
+              'send_page_view': true
+            });
+            // Engagement timer: fires after 10s to count as engaged session
+            setTimeout(function() {
+              gtag('event', 'engagement_timer', {
+                'event_category': 'engagement',
+                'event_label': '10s_stay',
+                'non_interaction': false
+              });
+            }, 10000);
+            // Scroll engagement event
+            var scrollFired = false;
+            window.addEventListener('scroll', function() {
+              if (!scrollFired && window.scrollY > 300) {
+                scrollFired = true;
+                gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': 'scrolled_300px',
+                  'non_interaction': false
+                });
+              }
+            });
           `}
         </Script>
         <script
