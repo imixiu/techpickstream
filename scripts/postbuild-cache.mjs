@@ -19,7 +19,7 @@ const cacheHelpers = `
             }
             async function cacheGet(url) {
                 try {
-const cacheUrl = new URL(url); cacheUrl.searchParams.set("_cv", "v4"); const key = new Request(cacheUrl.toString(), { method: "GET", headers: {} });
+const cacheUrl = new URL(url); cacheUrl.searchParams.set("_cv", "v5"); const key = new Request(cacheUrl.toString(), { method: "GET", headers: {} });
                 const hit = await caches.default.match(key);
                     if (hit) {
                         const r = new Response(hit.body, hit);

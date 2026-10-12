@@ -4,6 +4,7 @@ import { AuthorCard } from "@/components/author/AuthorCard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  robots: { index: false, follow: true },
   title: `Our Team - ${siteConfig.title}`,
   description: `Meet the expert team behind ${siteConfig.title}.`,
 };

@@ -1,3 +1,7 @@
+html {
+  overflow-x: hidden;
+}
+
 @import "tailwindcss";
 
 /* Site-wide custom styles — :root colors are replaced per-site during create-site */

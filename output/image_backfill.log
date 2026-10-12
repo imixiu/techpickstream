@@ -1,0 +1,217 @@
+Workers: 3 | Batch: 100 | Max rounds: 3
+
+============================================================
+Round 1/3 — fetching articles without images...
+Found 17 without images | Already done: 430 | To process: 17
+
+  Batch 1/1: 17 articles
+  warn id=17181741 attempt 1 failed: HTTP Error 404: Not Found, retry 1.9s
+  warn id=17181734 attempt 1 failed: HTTP Error 404: Not Found, retry 1.1s
+  warn id=17181728 attempt 1 failed: HTTP Error 404: Not Found, retry 1.5s
+  warn id=17181741 attempt 2 failed: HTTP Error 404: Not Found, retry 2.4s
+  warn id=17181728 attempt 2 failed: HTTP Error 404: Not Found, retry 2.6s
+  warn id=17181734 429 rate-limited, attempt 2/3, backoff 21s
+  warn id=17181741 429 rate-limited, attempt 3/3, backoff 44s
+  FAIL id=17181728: HTTP Error 404: Not Found
+  warn id=17181756 attempt 1 failed: HTTP Error 404: Not Found, retry 1.3s
+  warn id=17181756 attempt 2 failed: HTTP Error 404: Not Found, retry 2.2s
+  FAIL id=17181756: HTTP Error 404: Not Found
+  warn id=17181762 attempt 1 failed: HTTP Error 404: Not Found, retry 1.9s
+  warn id=17181762 429 rate-limited, attempt 2/3, backoff 21s
+  warn id=17181734 429 rate-limited, attempt 3/3, backoff 45s
+  FAIL id=17181762: HTTP Error 404: Not Found
+  warn id=17181766 attempt 1 failed: HTTP Error 404: Not Found, retry 1.1s
+  warn cdn id=17181741 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.7s
+  warn id=17181766 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  FAIL id=17181741: quote_from_bytes() expected bytes
+  warn id=17181779 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181766 429 rate-limited, attempt 3/3, backoff 43s
+  warn id=17181779 attempt 2 failed: HTTP Error 404: Not Found, retry 2.2s
+  FAIL id=17181779: HTTP Error 404: Not Found
+  warn cdn id=17181734 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.0s
+  FAIL id=17181734: quote_from_bytes() expected bytes
+  warn id=17181780 attempt 1 failed: HTTP Error 404: Not Found, retry 1.5s
+  warn id=17181783 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181780 attempt 2 failed: HTTP Error 404: Not Found, retry 2.5s
+  warn id=17181780 429 rate-limited, attempt 3/3, backoff 43s
+  warn id=17181783 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  warn id=17181783 429 rate-limited, attempt 3/3, backoff 45s
+  warn cdn id=17181766 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.6s
+  FAIL id=17181766: quote_from_bytes() expected bytes
+  warn id=17181787 attempt 1 failed: HTTP Error 404: Not Found, retry 1.4s
+  warn id=17181787 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  FAIL id=17181787: HTTP Error 404: Not Found
+  warn id=17181935 429 rate-limited, attempt 1/3, backoff 10s
+  warn cdn id=17181780 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.7s
+  FAIL id=17181780: quote_from_bytes() expected bytes
+  warn id=17181935 attempt 2 failed: HTTP Error 404: Not Found, retry 2.2s
+  warn id=17181944 429 rate-limited, attempt 1/3, backoff 11s
+  warn id=17181935 429 rate-limited, attempt 3/3, backoff 43s
+  warn cdn id=17181783 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.0s
+  FAIL id=17181783: quote_from_bytes() expected bytes
+  warn id=17181949 attempt 1 failed: HTTP Error 404: Not Found, retry 1.2s
+  warn id=17181944 attempt 2 failed: HTTP Error 404: Not Found, retry 2.3s
+  warn id=17181949 attempt 2 failed: HTTP Error 404: Not Found, retry 2.6s
+  FAIL id=17181944: HTTP Error 404: Not Found
+  warn id=17181951 attempt 1 failed: HTTP Error 404: Not Found, retry 1.3s
+  FAIL id=17181949: HTTP Error 404: Not Found
+  warn id=17181951 attempt 2 failed: HTTP Error 404: Not Found, retry 2.6s
+  warn id=17181971 429 rate-limited, attempt 1/3, backoff 13s
+  FAIL id=17181951: HTTP Error 404: Not Found
+  warn id=17181984 attempt 1 failed: HTTP Error 404: Not Found, retry 1.2s
+  warn id=17181984 attempt 2 failed: HTTP Error 404: Not Found, retry 2.5s
+  warn id=17181971 429 rate-limited, attempt 2/3, backoff 21s
+  FAIL id=17181984: HTTP Error 404: Not Found
+  warn id=17182030 429 rate-limited, attempt 1/3, backoff 13s
+  warn cdn id=17181935 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.9s
+  FAIL id=17181935: quote_from_bytes() expected bytes
+  warn id=17182030 attempt 2 failed: HTTP Error 404: Not Found, retry 2.9s
+  FAIL id=17182030: HTTP Error 404: Not Found
+  FAIL id=17181971: HTTP Error 404: Not Found
+  Batch done: 0 ok, 17 fail (cumulative)
+
+  Round 1 complete. Remaining without images: 17
+  17 new articles found (likely inserted during generation). Starting next round...
+
+============================================================
+Round 2/3 — fetching articles without images...
+Found 17 without images | Already done: 430 | To process: 17
+
+  Batch 1/1: 17 articles
+  warn id=17181728 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181741 429 rate-limited, attempt 1/3, backoff 10s
+  warn id=17181734 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181741 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  warn id=17181728 429 rate-limited, attempt 2/3, backoff 23s
+  warn id=17181741 429 rate-limited, attempt 3/3, backoff 43s
+  warn id=17181734 attempt 2 failed: HTTP Error 404: Not Found, retry 2.9s
+  warn id=17181734 429 rate-limited, attempt 3/3, backoff 43s
+  FAIL id=17181728: HTTP Error 404: Not Found
+  warn id=17181756 429 rate-limited, attempt 1/3, backoff 11s
+  warn id=17181756 429 rate-limited, attempt 2/3, backoff 24s
+  warn cdn id=17181741 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.1s
+  FAIL id=17181741: quote_from_bytes() expected bytes
+  warn id=17181762 429 rate-limited, attempt 1/3, backoff 14s
+  warn cdn id=17181734 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.9s
+  FAIL id=17181734: quote_from_bytes() expected bytes
+  warn id=17181766 attempt 1 failed: HTTP Error 404: Not Found, retry 1.1s
+  warn id=17181766 429 rate-limited, attempt 2/3, backoff 24s
+  warn id=17181762 429 rate-limited, attempt 2/3, backoff 21s
+  FAIL id=17181756: HTTP Error 404: Not Found
+  warn id=17181779 attempt 1 failed: HTTP Error 404: Not Found, retry 1.4s
+  warn id=17181779 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  FAIL id=17181779: HTTP Error 404: Not Found
+  warn id=17181780 attempt 1 failed: HTTP Error 404: Not Found, retry 1.8s
+  warn id=17181780 attempt 2 failed: HTTP Error 404: Not Found, retry 2.6s
+  FAIL id=17181762: HTTP Error 404: Not Found
+  FAIL id=17181766: HTTP Error 404: Not Found
+  FAIL id=17181780: HTTP Error 404: Not Found
+  warn id=17181783 attempt 1 failed: HTTP Error 404: Not Found, retry 1.2s
+  warn id=17181787 attempt 1 failed: HTTP Error 404: Not Found, retry 1.3s
+  warn id=17181935 attempt 1 failed: HTTP Error 404: Not Found, retry 1.5s
+  warn id=17181783 attempt 2 failed: HTTP Error 404: Not Found, retry 3.0s
+  warn id=17181787 attempt 2 failed: HTTP Error 404: Not Found, retry 2.8s
+  warn id=17181935 attempt 2 failed: HTTP Error 404: Not Found, retry 2.8s
+  FAIL id=17181783: HTTP Error 404: Not Found
+  warn id=17181944 attempt 1 failed: HTTP Error 404: Not Found, retry 1.3s
+  warn id=17181787 429 rate-limited, attempt 3/3, backoff 45s
+  FAIL id=17181935: HTTP Error 404: Not Found
+  warn id=17181944 attempt 2 failed: HTTP Error 404: Not Found, retry 2.8s
+  warn id=17181949 attempt 1 failed: HTTP Error 404: Not Found, retry 1.0s
+  warn id=17181949 attempt 2 failed: HTTP Error 404: Not Found, retry 2.5s
+  warn id=17181944 429 rate-limited, attempt 3/3, backoff 41s
+  warn id=17181949 429 rate-limited, attempt 3/3, backoff 42s
+  warn cdn id=17181787 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.2s
+  FAIL id=17181787: quote_from_bytes() expected bytes
+  warn id=17181951 attempt 1 failed: HTTP Error 404: Not Found, retry 1.1s
+  warn cdn id=17181944 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.1s
+  FAIL id=17181944: quote_from_bytes() expected bytes
+  warn id=17181951 attempt 2 failed: HTTP Error 404: Not Found, retry 2.5s
+  warn id=17181971 429 rate-limited, attempt 1/3, backoff 14s
+  warn cdn id=17181949 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.5s
+  FAIL id=17181949: quote_from_bytes() expected bytes
+  warn id=17181951 429 rate-limited, attempt 3/3, backoff 42s
+  warn id=17181984 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181971 429 rate-limited, attempt 2/3, backoff 22s
+  warn id=17181984 429 rate-limited, attempt 2/3, backoff 23s
+  FAIL id=17181971: HTTP Error 404: Not Found
+  warn id=17182030 attempt 1 failed: HTTP Error 404: Not Found, retry 1.5s
+  warn cdn id=17181951 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.9s
+  FAIL id=17181984: HTTP Error 404: Not Found
+  FAIL id=17181951: quote_from_bytes() expected bytes
+  warn id=17182030 attempt 2 failed: HTTP Error 404: Not Found, retry 2.3s
+  FAIL id=17182030: HTTP Error 404: Not Found
+  Batch done: 0 ok, 34 fail (cumulative)
+
+  Round 2 complete. Remaining without images: 17
+  17 new articles found (likely inserted during generation). Starting next round...
+
+============================================================
+Round 3/3 — fetching articles without images...
+Found 17 without images | Already done: 430 | To process: 17
+
+  Batch 1/1: 17 articles
+  warn id=17181728 429 rate-limited, attempt 1/3, backoff 11s
+  warn id=17181734 429 rate-limited, attempt 1/3, backoff 12s
+  warn id=17181741 attempt 1 failed: HTTP Error 404: Not Found, retry 1.3s
+  warn id=17181741 attempt 2 failed: HTTP Error 404: Not Found, retry 2.5s
+  FAIL id=17181741: HTTP Error 404: Not Found
+  warn id=17181728 attempt 2 failed: HTTP Error 404: Not Found, retry 2.9s
+  warn id=17181734 attempt 2 failed: HTTP Error 404: Not Found, retry 2.9s
+  warn id=17181756 429 rate-limited, attempt 1/3, backoff 10s
+  FAIL id=17181728: HTTP Error 404: Not Found
+  FAIL id=17181734: HTTP Error 404: Not Found
+  warn id=17181762 attempt 1 failed: HTTP Error 404: Not Found, retry 1.4s
+  warn id=17181766 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181762 attempt 2 failed: HTTP Error 404: Not Found, retry 2.7s
+  warn id=17181756 429 rate-limited, attempt 2/3, backoff 20s
+  FAIL id=17181762: HTTP Error 404: Not Found
+  warn id=17181779 429 rate-limited, attempt 1/3, backoff 14s
+  warn id=17181766 attempt 2 failed: HTTP Error 404: Not Found, retry 2.4s
+  FAIL id=17181766: HTTP Error 404: Not Found
+  warn id=17181780 attempt 1 failed: HTTP Error 404: Not Found, retry 1.2s
+  warn id=17181780 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  warn id=17181779 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  warn id=17181756 429 rate-limited, attempt 3/3, backoff 45s
+  FAIL id=17181780: HTTP Error 404: Not Found
+  FAIL id=17181779: HTTP Error 404: Not Found
+  warn id=17181787 429 rate-limited, attempt 1/3, backoff 10s
+  warn id=17181783 attempt 1 failed: HTTP Error 404: Not Found, retry 1.6s
+  warn id=17181783 attempt 2 failed: HTTP Error 404: Not Found, retry 3.0s
+  FAIL id=17181783: HTTP Error 404: Not Found
+  warn id=17181935 429 rate-limited, attempt 1/3, backoff 10s
+  warn id=17181787 attempt 2 failed: HTTP Error 404: Not Found, retry 2.8s
+  FAIL id=17181787: HTTP Error 404: Not Found
+  warn id=17181944 attempt 1 failed: HTTP Error 404: Not Found, retry 1.7s
+  warn id=17181944 attempt 2 failed: HTTP Error 404: Not Found, retry 2.9s
+  warn id=17181935 429 rate-limited, attempt 2/3, backoff 20s
+  FAIL id=17181944: HTTP Error 404: Not Found
+  warn id=17181949 attempt 1 failed: HTTP Error 404: Not Found, retry 1.2s
+  warn id=17181949 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  warn cdn id=17181756 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.2s
+  warn id=17181949 429 rate-limited, attempt 3/3, backoff 41s
+  FAIL id=17181756: quote_from_bytes() expected bytes
+  warn id=17181951 attempt 1 failed: HTTP Error 404: Not Found, retry 1.2s
+  FAIL id=17181935: HTTP Error 404: Not Found
+  warn id=17181951 attempt 2 failed: HTTP Error 404: Not Found, retry 2.6s
+  warn id=17181971 attempt 1 failed: HTTP Error 404: Not Found, retry 1.7s
+  FAIL id=17181951: HTTP Error 404: Not Found
+  warn id=17181971 attempt 2 failed: HTTP Error 404: Not Found, retry 2.7s
+  warn id=17181984 attempt 1 failed: HTTP Error 404: Not Found, retry 1.6s
+  FAIL id=17181971: HTTP Error 404: Not Found
+  warn id=17181984 attempt 2 failed: HTTP Error 404: Not Found, retry 2.2s
+  warn id=17182030 attempt 1 failed: HTTP Error 404: Not Found, retry 1.3s
+  warn id=17182030 attempt 2 failed: HTTP Error 404: Not Found, retry 2.1s
+  warn id=17181984 429 rate-limited, attempt 3/3, backoff 43s
+  FAIL id=17182030: HTTP Error 404: Not Found
+  warn cdn id=17181949 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.6s
+  FAIL id=17181949: quote_from_bytes() expected bytes
+  warn cdn id=17181984 attempt 1 failed: quote_from_bytes() expected bytes, retry 1.8s
+  FAIL id=17181984: quote_from_bytes() expected bytes
+  Batch done: 0 ok, 51 fail (cumulative)
+
+  Round 3 complete. Remaining without images: 17
+
+============================================================
+Done! Success: 0 Failed: 51 Time: 9.9min Rate: 595.6s/img
+============================================================

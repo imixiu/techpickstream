@@ -20,7 +20,6 @@ const authors = [
   { name: 'Alex Turner', slug: 'alex-turner', bio: 'Consumer electronics industry veteran with 20+ years of experience. Covers market trends, product launches, and buying strategies.', specialty: 'Industry Analysis' },
   { name: 'Priya Sharma', slug: 'priya-sharma', bio: 'Mobile photography expert and camera technology reviewer. Breaks down sensor specs into practical shooting advice.', specialty: 'Camera & Photography Tech' },
   { name: 'Tom Bradley', slug: 'tom-bradley', bio: 'Home theater and AV specialist. Reviews TVs, projectors, soundbars, and streaming devices for the ultimate entertainment setup.', specialty: 'Home Theater & AV' },
-  { name: 'TechPick Team', slug: 'techpick-team', bio: 'The TechPickStream editorial team. Collaborative articles, roundups, and buying guides researched and written by our full staff.', specialty: 'Collaborative & Roundups' },
 ];
 
 async function main() {
